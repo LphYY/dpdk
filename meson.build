@@ -36,6 +36,7 @@ dpdk_drivers = []
 dpdk_extra_ldflags = []
 dpdk_libs_disabled = []
 dpdk_drvs_disabled = []
+all_static_objs = []
 abi_version_file = files('ABI_VERSION')
 
 if host_machine.cpu_family().startswith('x86')
@@ -61,14 +62,14 @@ subdir('config')
 
 # build libs and drivers
 subdir('lib')
-subdir('drivers')
+#subdir('drivers')
 
 # build binaries and installable tools
 subdir('usertools')
-subdir('app')
+#subdir('app')
 
 # build docs
-subdir('doc')
+#subdir('doc')
 
 # build any examples explicitly requested - useful for developers - and
 # install any example code into the appropriate install path
@@ -140,3 +141,15 @@ foreach drv:dpdk_drvs_disabled
     output_message += drv + ':\t' + reason + '\n\t'
 endforeach
 message(output_message + '\n')
+
+sources = []
+ccflags = machine_args
+ccflags += ['-g ']
+lkargs = []
+
+shared_lib = shared_library('dpdk',
+	  sources,
+	  objects: all_static_objs,
+	  c_args: ccflags,
+	  link_args: lkargs,
+	  intall:true)

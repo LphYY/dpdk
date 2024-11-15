@@ -194,10 +194,11 @@ foreach l:libraries
             c_args: cflags,
             dependencies: static_deps,
             include_directories: includes,
-            install: true)
+            install: false)
     static_dep = declare_dependency(
             include_directories: includes,
             dependencies: static_deps)
+    all_static_objs += static_lib.extract_all_objects(recursive:false)
 
     if not use_function_versioning or is_windows
         # use pre-build objects to build shared lib
@@ -258,7 +259,7 @@ foreach l:libraries
             link_depends: lk_deps,
             version: abi_version,
             soversion: so_version,
-            install: true)
+            install: false)
     shared_dep = declare_dependency(link_with: shared_lib,
             include_directories: includes,
             dependencies: shared_deps)

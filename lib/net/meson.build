@@ -71,7 +71,7 @@ if dpdk_conf.has('RTE_ARCH_X86_64')
                     '-mavx2',
                     '-mavx',
             ]
-            cflags += ['-DCC_X86_64_AVX512_VPCLMULQDQ_SUPPORT']
+	    #cflags += ['-DCC_X86_64_AVX512_VPCLMULQDQ_SUPPORT']
         endif
     elif net_crc_sse42_cc_support == true
         build_static_net_crc_sse42_lib = 1

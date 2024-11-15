@@ -1,0 +1,15 @@
+[binaries]
+c = 'x86_64-linux-gnu-gcc'
+cpp = 'x86_64-linux-gnu-cpp'
+ar = 'x86_64-linux-gnu-gcc-ar'
+strip = 'x86_64-linux-gnu-strip'
+pkgconfig = 'x86_64-linux-gnu-pkg-config'
+
+[host_machine]
+system = 'linux'
+cpu_family = 'x86_64'
+cpu = 'native'
+endian = 'little'
+
+[properties]
+c_args = ''
