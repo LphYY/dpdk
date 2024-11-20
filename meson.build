@@ -66,7 +66,7 @@ subdir('lib')
 
 # build binaries and installable tools
 subdir('usertools')
-#subdir('app')
+subdir('app')
 
 # build docs
 #subdir('doc')

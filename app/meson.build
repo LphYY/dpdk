@@ -2,20 +2,21 @@
 # Copyright(c) 2017-2019 Intel Corporation
 
 apps = [
-        'pdump',
-        'proc-info',
-        'test-acl',
-        'test-bbdev',
-        'test-cmdline',
-        'test-compress-perf',
-        'test-crypto-perf',
-        'test-eventdev',
-        'test-fib',
-        'test-flow-perf',
-        'test-pipeline',
-        'test-pmd',
-        'test-regex',
-        'test-sad',
+      'HPA'
+      # 'pdump',
+      # 'proc-info',
+      # 'test-acl',
+      # 'test-bbdev',
+      # 'test-cmdline',
+      # 'test-compress-perf',
+      # 'test-crypto-perf',
+      # 'test-eventdev',
+      # 'test-fib',
+      # 'test-flow-perf',
+      # 'test-pipeline',
+      # 'test-pmd',
+      # 'test-regex',
+      # 'test-sad',
 ]
 
 default_cflags = machine_args + ['-DALLOW_EXPERIMENTAL_API']
@@ -55,6 +56,7 @@ foreach app:apps
         link_libs = dpdk_static_libraries + dpdk_drivers
     endif
 
+    cflags += [ '-g' ]
     executable('dpdk-' + name,
             sources,
             c_args: cflags,
@@ -67,4 +69,4 @@ foreach app:apps
 endforeach
 
 # special case the autotests
-subdir('test')
+#subdir('test')
